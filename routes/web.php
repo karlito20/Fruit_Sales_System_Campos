@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\FruitController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReportsController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -17,4 +19,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+Route::middleware('auth')->group(function () {
+    Route::resource('fruits', FruitController::class);
+    Route::get('/reports', [ReportsController::class, 'index'])->name('reports.index');
+});
+
+require __DIR__ . '/auth.php';
