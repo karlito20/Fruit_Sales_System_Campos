@@ -21,7 +21,7 @@ class FruitController extends Controller
      */
     public function create()
     {
-        //
+        return view('fruits.create');
     }
 
     /**
@@ -37,7 +37,9 @@ class FruitController extends Controller
      */
     public function show(Fruit $fruit)
     {
-        //
+        return view('fruits.show', [
+            'fruit' => $fruit,
+        ]);
     }
 
     /**
@@ -45,7 +47,9 @@ class FruitController extends Controller
      */
     public function edit(Fruit $fruit)
     {
-        //
+        return view('fruits.edit', [
+            'fruit' => $fruit,
+        ]);
     }
 
     /**
